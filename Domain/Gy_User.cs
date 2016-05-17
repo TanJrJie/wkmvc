@@ -14,15 +14,9 @@ namespace Domain
     
     public partial class Gy_User
     {
+        public int ID { get; set; }
         public string UserCode { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        public string Remark { get; set; }
-        public bool StopFlag { get; set; }
-        public bool FixedFlag { get; set; }
-        public string TaxTypeCode { get; set; }
-        public string Email { get; set; }
-        public string Tel { get; set; }
-        public string Fax { get; set; }
     }
 }

@@ -8,6 +8,11 @@ namespace Service.ServiceImp
 {
     public class UserManage : RepositoryBase<Domain.Gy_User>, IService.IUserManage
     {
+        public UserManage() {
+            var a = "JinRu";
+        }
+
+
         /// <summary>
         /// 管理用户登录验证
         /// add yuangang by 2016-05-12

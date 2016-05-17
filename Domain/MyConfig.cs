@@ -12,7 +12,7 @@ namespace Domain
     /// 字符串对应应用程序中配置文件
     /// 模型对应Domain中的数据库模型Context.cs构造函数
     /// </summary>
-    public class MyConfig : Entities
+    public class MyConfig : dbEntities
     {
         /// <summary>
         /// 封装EF实体模型，供Dao使用，
@@ -22,7 +22,7 @@ namespace Domain
         public MyConfig()
         {
             //实例化EF数据上下文
-            db = new Entities();//注：Entities()要修改成与EF上下文统一
+            db = new dbEntities();//注：Entities()要修改成与EF上下文统一
         }
 
         #region 连接数据库配置

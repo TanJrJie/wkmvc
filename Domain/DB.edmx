@@ -9,16 +9,10 @@
           <Key>
             <PropertyRef Name="UserCode" />
           </Key>
-          <Property Name="UserCode" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PassWord" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
-          <Property Name="StopFlag" Type="bit" Nullable="false" />
-          <Property Name="FixedFlag" Type="bit" Nullable="false" />
-          <Property Name="TaxTypeCode" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="PassWord" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="DomainStoreContainer">
           <EntitySet Name="Gy_User" EntityType="Self.Gy_User" Schema="dbo" store:Type="Tables" />
@@ -32,18 +26,12 @@
           <Key>
             <PropertyRef Name="UserCode" />
           </Key>
-          <Property Name="UserCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StopFlag" Type="Boolean" Nullable="false" />
-          <Property Name="FixedFlag" Type="Boolean" Nullable="false" />
-          <Property Name="TaxTypeCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Gy_User" EntityType="Self.Gy_User" />
         </EntityContainer>
       </Schema>
@@ -51,20 +39,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="dbEntities">
           <EntitySetMapping Name="Gy_User">
             <EntityTypeMapping TypeName="Domain.Gy_User">
               <MappingFragment StoreEntitySet="Gy_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="StopFlag" ColumnName="StopFlag" />
-                <ScalarProperty Name="FixedFlag" ColumnName="FixedFlag" />
-                <ScalarProperty Name="TaxTypeCode" ColumnName="TaxTypeCode" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -83,7 +65,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>

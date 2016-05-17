@@ -13,15 +13,20 @@ using System.Collections;
 namespace Service
 {
     /// <summary>
-    /// 数据操作基本实现类，公用实现方法
-    /// add yuangang by 2016-05-10
+    /// 数据操作基本实现类
     /// </summary>
     /// <typeparam name="T">具体操作的实体模型</typeparam>
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region 固定公用帮助，含事务
 
-        private DbContext context = new MyConfig().db;
+        public RepositoryBase() {
+            var a = "11";
+            context = new MyConfig().db;
+        }
+        private DbContext context { get; }
+        //private DbContext context = new MyConfig().db;
+
         /// <summary>
         /// 数据上下文--->根据Domain实体模型名称进行更改
         /// </summary>
@@ -33,6 +38,7 @@ namespace Service
                 return context;
             }
         }
+
         /// <summary>
         /// 数据上下文--->拓展属性
         /// </summary>
@@ -43,6 +49,7 @@ namespace Service
                 return new MyConfig();
             }
         }
+
         /// <summary>
         /// 公用泛型处理属性
         /// 注:所有泛型操作的基础
@@ -51,10 +58,12 @@ namespace Service
         {
             get { return this.Context.Set<T>(); }
         }
+
         /// <summary>
         /// 事务
         /// </summary>
         private DbContextTransaction _transaction = null;
+
         /// <summary>
         /// 开始事务
         /// </summary>
@@ -70,14 +79,17 @@ namespace Service
             }
             set { this._transaction = value; }
         }
+
         /// <summary>
         /// 事务状态
         /// </summary>
         public bool Committed { get; set; }
+
         /// <summary>
         /// 异步锁定
         /// </summary>
         private readonly object sync = new object();
+
         /// <summary>
         /// 提交事务
         /// </summary>
@@ -93,6 +105,7 @@ namespace Service
                 Committed = true;
             }
         }
+
         /// <summary>
         /// 回滚事务
         /// </summary>
@@ -102,6 +115,7 @@ namespace Service
             if (this._transaction != null)
                 this._transaction.Rollback();
         }
+
         #endregion
 
         #region 获取单条记录

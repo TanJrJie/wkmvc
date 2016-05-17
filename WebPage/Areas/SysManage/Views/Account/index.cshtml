@@ -20,7 +20,7 @@
             }, new { @class = "form-signin" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.TextBoxFor(model => model.ACCOUNT,
+                @Html.TextBoxFor(model => model.UserCode,
                                                         new
                                                         {
                                                             @class = "form-control",
@@ -28,7 +28,7 @@
                                                             @maxlength = 15,
                                                             @required = "required"
                                                         })
-                @Html.PasswordFor(model => model.PASSWORD,
+                @Html.PasswordFor(model => model.PassWord,
                                                         new
                                                         {
                                                             @class = "form-control",

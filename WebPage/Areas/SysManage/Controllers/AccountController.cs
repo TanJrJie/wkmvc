@@ -12,6 +12,11 @@ namespace WebPage.Areas.SysManage.Controllers
 {
     public class AccountController : Controller
     {
+        public AccountController()
+        {
+            var a = "AccountController";
+        }
+
         #region 声明容器
         IUserManage UserManage { get; set; }
         #endregion
